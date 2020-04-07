@@ -1,3 +1,8 @@
+unsigned int get_money(unsigned short int);
+
+unsigned int get_money(unsigned short int money) {
+  return money;
+}
 /* This function should accept the amount needed in cash 
    as input and return the number of notes per each of
    the following denominations:
@@ -18,4 +23,3 @@
    2590 0x11012000
   31999 0xf3412014
 */
-unsigned int get_money(unsigned short int);
