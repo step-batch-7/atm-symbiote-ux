@@ -1,11 +1,11 @@
 #include <stdio.h>
 #include "atm.h"
 
-void display_notes(int *note, unsigned short int *money) {
-  int count = *money / *note;
-  if(count) {
-  printf("%d Note/Notes of Rs %d \n",count,*note);
+unsigned short int display_notes(int *note, unsigned short int *money) {
+  if(*money / *note) {
+  printf("%d Note/Notes of Rs %d \n",*money / *note,*note);
   }
+  return *money % *note;
 }
 
 int main(void)
@@ -19,8 +19,7 @@ int main(void)
     printf("Number of Notes in Rs %u are: in hex %08x\n", amounts[i], notes);
     unsigned short int money = amounts[i];
      for(int i = 7; i >= 0; i--) {
-       display_notes(&ptr[i],&money);
-       money = money % ptr[i];
+       money = display_notes(&ptr[i],&money);
      }
   }
   return 0;
