@@ -1,14 +1,27 @@
 #include <stdio.h>
 #include "atm.h"
 
+void display_notes(int *note, unsigned short int *money) {
+  int count = *money / *note;
+  if(count) {
+  printf("%d Note/Notes of Rs %d \n",count,*note);
+  }
+}
+
 int main(void)
 {
-  unsigned short int amounts[] = {1, 10, 39, 589, 2590, 31999,40000};
-  for (int i = 0; i < 7; i++)
+  unsigned short int amounts[] = {1, 10, 39, 589, 2590, 31999};
+  int denominations[] = {1,5,10,20,50,100,500,2000};
+  int *ptr = denominations;
+  for (int i = 0; i < 6; i++)
   {
     unsigned int notes = get_money(amounts[i]);
-    printf("%5u %08x\n", amounts[i], notes);
+    printf("Number of Notes in Rs %u are: in hex %08x\n", amounts[i], notes);
+    unsigned short int money = amounts[i];
+     for(int i = 7; i >= 0; i--) {
+       display_notes(&ptr[i],&money);
+       money = money % ptr[i];
+     }
   }
-
   return 0;
 }
