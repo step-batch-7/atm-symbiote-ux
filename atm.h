@@ -18,4 +18,6 @@
    2590 0x11012000
   31999 0xf3412014
 */
+#define DENOMINATIONS {2000, 500, 100, 50, 20, 10, 5, 1}
+void display_notes(unsigned int);
 unsigned int get_money(unsigned short int);
