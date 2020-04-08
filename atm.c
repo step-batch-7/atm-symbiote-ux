@@ -3,12 +3,12 @@
 
 unsigned int get_money(unsigned short int money) {
   unsigned int notes = 0;
-  int denominations[] = {1,5,10,20,50,100,500,2000};
-  int *ptr = denominations;
+  int denominations[] = {2000,500,100,50,20,10,5,1};
   if(money > 31999) return notes;
-  for(int i = 7; i >= 0; i--) {
-    notes += pow(16,i) * (money / ptr[i]);
-    money = money % ptr[i];
+  for(int i = 0; i < 8; i++) {
+    notes <<=4;
+    notes |=money/denominations[i];
+    money %= denominations[i];
   }
   return notes;
 }
