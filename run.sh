@@ -1,7 +1,5 @@
 #! /bin/bash
 
-executable=$1
-
 rm -rf bin/*
 rm -rf *.o
 gcc -c *.c
